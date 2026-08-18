@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Checking Important Student Information Regularly Can Save You Trouble</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Mono:wght@400;700&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16213E;
+  --navy:#22325C;
+  --sun:#F2B705;
+  --emerald:#2E9E6B;
+  --rose:#D94F5C;
+  --paper:#E7ECF3;
+  --paper-2:#F8FAFC;
+  --slate:#5C6885;
+  --line:rgba(22,33,62,.15);
+  --disp:'Plus Jakarta Sans',system-ui,sans-serif;
+  --body:'Spectral',Georgia,serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px}
+body{
+  margin:0;background:var(--paper-2);color:var(--ink);
+  font-family:var(--body);font-size:18px;line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--navy);text-underline-offset:3px}
+.wrap{width:100%;max-width:1170px;margin:0 auto;padding:0 26px}
+.narrow{max-width:790px}
+
+/* header — single line */
+.hdr{
+  position:sticky;top:0;z-index:60;background:rgba(248,250,252,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.hdr-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:76px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.brand-mk{
+  width:38px;height:38px;border-radius:11px;background:var(--ink);color:var(--sun);
+  display:grid;place-items:center;font-family:var(--disp);font-weight:800;font-size:12.5px;
+  letter-spacing:-.3px;box-shadow:0 0 0 3px rgba(22,33,62,.1);
+}
+.brand-tx b{display:block;font-family:var(--disp);font-weight:800;font-size:16px;letter-spacing:-.4px;line-height:1.1}
+.brand-tx span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:2px;color:var(--slate);text-transform:uppercase;margin-top:2px}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{
+  font-family:var(--mono);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;
+  text-decoration:none;color:var(--slate);transition:color .2s;
+}
+.nav a:hover{color:var(--ink)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-family:var(--mono);font-size:11px;letter-spacing:1.2px;color:var(--ink);cursor:pointer}
+
+/* hero */
+.hero{position:relative;background:var(--ink);color:#C9D3E6;overflow:hidden;padding:82px 0 84px}
+.hero:before{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.04) 0 1px,transparent 1px 14px);
+}
+.hero:after{
+  content:"";position:absolute;width:700px;height:700px;right:-260px;top:-300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(242,183,5,.22),transparent 68%);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:54px;align-items:center}
+h1{
+  font-family:var(--disp);font-weight:800;font-size:clamp(2.1rem,4.6vw,3.5rem);
+  line-height:1.07;letter-spacing:-1.7px;margin:0 0 28px;color:#fff;max-width:19ch;
+}
+.hero p{font-size:1.02rem;line-height:1.82;max-width:64ch;color:#A7B4CE;margin:0 0 16px}
+.hero p.lede{font-size:1.14rem;color:#DCE4F2;line-height:1.72}
+.hero p:last-of-type{margin-bottom:0}
+.hero a{color:var(--sun)}
+.hero a:hover{color:#fff}
+
+/* unread-notification graphic */
+.inbox svg{width:100%;height:auto;display:block;overflow:visible}
+.msg{opacity:0;animation:slide .5s ease-out forwards}
+@keyframes slide{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+.ping{fill:var(--rose);opacity:0;animation:ping 2.6s ease-out 1.1s infinite}
+@keyframes ping{0%{opacity:.9;r:6}70%{opacity:0;r:15}100%{opacity:0;r:15}}
+
+/* sections */
+section{padding:80px 0}
+.band{background:var(--paper)}
+h2{
+  font-family:var(--disp);font-weight:800;font-size:clamp(1.6rem,3.3vw,2.3rem);
+  line-height:1.16;letter-spacing:-1.1px;margin:0 0 26px;max-width:25ch;
+}
+h2:before{content:"";display:block;width:52px;height:4px;border-radius:2px;background:var(--sun);margin-bottom:22px}
+h3{
+  font-family:var(--disp);font-weight:700;font-size:1.14rem;letter-spacing:-.4px;
+  margin:34px 0 10px;line-height:1.3;
+}
+p{margin:0 0 20px}
+p:last-child{margin-bottom:0}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.tight p{margin-bottom:14px}
+
+/* lists */
+.dots{margin:22px 0;padding:0;list-style:none}
+.dots li{
+  position:relative;padding:11px 0 11px 30px;border-bottom:1px solid var(--line);font-size:1rem;
+}
+.dots li:first-child{border-top:1px solid var(--line)}
+.dots li:before{
+  content:"";position:absolute;left:0;top:22px;width:12px;height:3px;border-radius:2px;background:var(--sun);
+}
+.closing .dots li{border-color:rgba(255,255,255,.15)}
+
+/* numbered questions */
+.qs{margin:24px 0;padding:0;list-style:none;counter-reset:q}
+.qs li{
+  counter-increment:q;position:relative;padding:13px 0 13px 46px;
+  border-bottom:1px solid var(--line);font-size:1rem;
+}
+.qs li:first-child{border-top:1px solid var(--line)}
+.qs li:before{
+  content:counter(q,decimal-leading-zero);position:absolute;left:0;top:15px;
+  font-family:var(--mono);font-size:11.5px;color:var(--navy);letter-spacing:.5px;
+}
+
+/* checkbox lists */
+.checks{margin:18px 0 26px;padding:0;list-style:none}
+.checks li{position:relative;padding:9px 0 9px 34px;font-size:1rem}
+.checks li:before{
+  content:"";position:absolute;left:0;top:17px;width:16px;height:16px;
+  border:2px solid var(--slate);border-radius:4px;
+}
+
+/* small cards row */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:26px 0}
+.cards div{
+  border:1px solid var(--line);border-top:4px solid var(--sun);border-radius:12px;
+  padding:20px 22px;background:var(--paper-2);font-size:.98rem;
+}
+.cards div:nth-child(2){border-top-color:var(--emerald)}
+.cards div:nth-child(3){border-top-color:var(--navy)}
+.cards b{display:block;font-family:var(--disp);font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+
+/* hierarchy cards */
+.tiers{display:grid;gap:16px;margin:26px 0}
+.tiers div{
+  border:1px solid var(--line);border-left:5px solid var(--rose);border-radius:12px;
+  padding:22px 24px;background:var(--paper-2);font-size:1rem;
+}
+.tiers div:nth-child(2){border-left-color:var(--sun)}
+.tiers div:nth-child(3){border-left-color:var(--slate)}
+.tiers b{display:block;font-family:var(--disp);font-weight:700;font-size:1.1rem;letter-spacing:-.3px;margin-bottom:8px}
+.tiers p{margin:0 0 8px;font-size:.98rem}
+.tiers p:last-child{margin:0}
+
+/* the seven steps */
+.steps{margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps>li{counter-increment:s;position:relative;padding:0 0 30px 74px}
+.steps>li:before{
+  content:counter(s,decimal-leading-zero);position:absolute;left:0;top:-2px;
+  width:48px;height:48px;border-radius:14px;background:var(--ink);color:var(--sun);
+  display:grid;place-items:center;font-family:var(--mono);font-size:13px;
+}
+.steps>li:after{content:"";position:absolute;left:24px;top:56px;bottom:4px;width:2px;background:var(--line)}
+.steps>li:last-child{padding-bottom:0}
+.steps>li:last-child:after{display:none}
+.steps b{display:block;font-family:var(--disp);font-weight:700;font-size:1.14rem;letter-spacing:-.4px;margin:8px 0 6px}
+.steps p{font-size:1rem;margin:0}
+
+/* pull quotes */
+blockquote{
+  margin:22px 0;padding:20px 26px;border-left:4px solid var(--sun);
+  background:rgba(242,183,5,.09);border-radius:0 10px 10px 0;
+  font-family:var(--disp);font-weight:600;font-size:1.08rem;letter-spacing:-.3px;
+}
+blockquote p{margin:0}
+.closing blockquote{background:rgba(242,183,5,.12);color:#fff}
+
+/* caution band */
+.warn{background:#FAEDEE;border-top:4px solid var(--rose);border-bottom:4px solid var(--rose)}
+.warn h2{color:#B03744}
+.warn h2:before{background:var(--rose)}
+.warn .dots li:before{background:var(--rose)}
+
+/* tracker table */
+.tbl-wrap{margin:26px 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.98rem;background:var(--paper-2)}
+th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line)}
+thead th{
+  font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--slate);border-bottom:3px solid var(--ink);
+}
+tbody th{font-family:var(--disp);font-weight:700;font-size:.98rem;letter-spacing:-.2px;white-space:nowrap}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+
+/* dark bands */
+.closing{background:var(--ink);color:#B9C5DC;position:relative;overflow:hidden}
+.closing:before{
+  content:"";position:absolute;inset:0;opacity:.45;
+  background:repeating-linear-gradient(115deg,rgba(255,255,255,.035) 0 1px,transparent 1px 14px);
+}
+.closing .wrap{position:relative;z-index:2}
+.closing h2,.closing h3{color:#fff}
+.closing a{color:var(--sun)}
+.closing a:hover{color:#fff}
+
+/* footer */
+footer{background:#0E1730;color:#8593B0;padding:66px 0 32px;font-size:.95rem}
+.f-top{display:grid;grid-template-columns:1.6fr 1fr;gap:44px;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer h5{font-family:var(--mono);font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:#fff;margin:0 0 18px}
+footer ul{list-style:none;margin:0;padding:0}
+footer li{margin-bottom:11px}
+footer a{color:#8593B0;text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--sun)}
+.f-brand b{font-family:var(--disp);font-weight:800;font-size:1.3rem;color:#fff;letter-spacing:-.6px;display:block;margin-bottom:22px}
+.socials{display:flex;gap:11px}
+.socials a{
+  width:40px;height:40px;border:1px solid rgba(255,255,255,.18);border-radius:11px;
+  display:grid;place-items:center;transition:background .2s,border-color .2s,transform .2s;
+}
+.socials a:hover{background:var(--sun);border-color:var(--sun);transform:translateY(-3px)}
+.socials svg{width:17px;height:17px;fill:#9EAAC6}
+.socials a:hover svg{fill:#16213E}
+.f-btm{padding-top:26px;font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:#63708F}
+
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:42px}.inbox{max-width:420px}}
+@media(max-width:900px){.f-top{grid-template-columns:1fr;gap:34px}}
+@media(max-width:760px){
+  body{font-size:17.5px}
+  .nav{position:fixed;inset:76px 0 auto;background:var(--paper-2);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:8px 26px 20px;display:none}
+  .nav.open{display:flex}
+  .nav a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+  section{padding:58px 0}
+  .hero{padding:58px 0 62px}
+  .steps>li{padding-left:58px}
+  .steps>li:before{width:40px;height:40px;font-size:11.5px;border-radius:12px}
+  .steps>li:after{left:20px;top:48px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .msg{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top">
+      <span class="brand-mk">NSFAS</span>
+      <span class="brand-tx"><b>My NSFAS Check</b><span>Student funding</span></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav">
+      <a href="#missed">Why Info Is Missed</a>
+      <a href="#status">Status Meanings</a>
+      <a href="#what">What To Check</a>
+      <a href="#routine">Weekly Routine</a>
+      <a href="#problem">Finding a Problem</a>
+      <a href="#checklist">Checklist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Why Checking Important Student Information Regularly Can Save You Trouble</h1>
+        <p class="lede">University life involves far more administration than many students expect. Before starting their studies, students may need to manage applications, admission decisions, funding, accommodation and registration. Once the academic year begins, there are still deadlines, examination information, academic results, fee-related notices, timetable changes and other messages to keep track of.</p>
+        <p>The difficulty is that these things rarely happen at the same time.</p>
+        <p>A student can spend several weeks focusing entirely on assignments and lectures while an important administrative update sits unread in an online account or email inbox.</p>
+        <p>By the time the student discovers it, the deadline may already be approaching. This is why regularly checking important student information is such a simple but valuable habit. <a href="https://mynsfascheck.co.za/">NSFAS status check</a> information can also be useful when students need to understand funding-related information. It does not require complicated technology or hours of administration. It simply means developing a routine for staying informed about the things that can affect your education.</p>
+      </div>
+
+      <div class="inbox" aria-hidden="true">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <g class="msg" style="animation-delay:.2s">
+            <rect x="10" y="8" width="380" height="30" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="32" cy="23" r="6" fill="rgba(255,255,255,.25)"/>
+            <rect x="50" y="19" width="180" height="8" rx="4" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g class="msg" style="animation-delay:.32s">
+            <rect x="10" y="46" width="380" height="30" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="32" cy="61" r="6" fill="rgba(255,255,255,.25)"/>
+            <rect x="50" y="57" width="230" height="8" rx="4" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g class="msg" style="animation-delay:.44s">
+            <rect x="10" y="84" width="380" height="34" rx="9" fill="rgba(242,183,5,.92)"/>
+            <circle class="ping" cx="32" cy="101" r="6"/>
+            <circle cx="32" cy="101" r="6" fill="#D94F5C"/>
+            <rect x="50" y="90" width="210" height="8" rx="4" fill="rgba(22,33,62,.8)"/>
+            <rect x="50" y="104" width="140" height="7" rx="3.5" fill="rgba(22,33,62,.5)"/>
+          </g>
+          <g class="msg" style="animation-delay:.56s">
+            <rect x="10" y="126" width="380" height="30" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="32" cy="141" r="6" fill="rgba(255,255,255,.25)"/>
+            <rect x="50" y="137" width="160" height="8" rx="4" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g class="msg" style="animation-delay:.68s">
+            <rect x="10" y="164" width="380" height="30" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="32" cy="179" r="6" fill="rgba(255,255,255,.25)"/>
+            <rect x="50" y="175" width="205" height="8" rx="4" fill="rgba(255,255,255,.2)"/>
+          </g>
+          <g class="msg" style="animation-delay:.8s">
+            <rect x="10" y="202" width="380" height="30" rx="9" fill="rgba(255,255,255,.07)"/>
+            <circle cx="32" cy="217" r="6" fill="rgba(255,255,255,.25)"/>
+            <rect x="50" y="213" width="150" height="8" rx="4" fill="rgba(255,255,255,.2)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="missed">
+  <div class="wrap narrow tight">
+    <h2>Why Students Often Miss Important Information</h2>
+    <p>Most students are not deliberately ignoring important information.</p>
+    <p>The problem is usually information overload.</p>
+    <p>A university student might receive messages from:</p>
+    <ul class="dots">
+      <li>their institution;</li>
+      <li>lecturers;</li>
+      <li>academic departments;</li>
+      <li>accommodation providers;</li>
+      <li>financial-aid offices;</li>
+      <li>student organisations;</li>
+      <li>classmates;</li>
+      <li>family members;</li>
+      <li>social-media groups.</li>
+    </ul>
+    <p>When dozens of messages arrive every week, it becomes easy for an important notification to disappear among less important ones.</p>
+    <p>Some students also assume that if there is a serious problem, somebody will contact them directly.</p>
+    <p>That assumption can be risky.</p>
+    <p>Many institutions expect students to monitor their own accounts and communication channels. An important update may be posted to a portal without anyone making a personal phone call.</p>
+    <p>The responsibility therefore shifts partly to the student.</p>
+  </div>
+</section>
+
+<section id="small" class="closing">
+  <div class="wrap narrow tight">
+    <h2>A Small Missed Update Can Become a Bigger Problem</h2>
+    <p>Consider a simple example.</p>
+    <p>A student submits a funding application and believes everything is complete. They stop checking their account because they are waiting for a decision.</p>
+    <p>Later, a request appears asking for additional information.</p>
+    <p>The student does not see it.</p>
+    <p>A few weeks pass.</p>
+    <p>When the student finally logs in, they discover that action was required earlier.</p>
+    <p>The original issue may have been relatively simple, but the delay in responding has made it more complicated.</p>
+    <p>This is why a regular status nsfas check can be useful for students who are waiting for information about their funding application.</p>
+    <p>The purpose is not to constantly refresh an account.</p>
+    <p>It is to make sure that an important message has not been missed.</p>
+  </div>
+</section>
+
+<section id="status" class="band">
+  <div class="wrap narrow tight">
+    <h2>Not Every Status Means the Same Thing</h2>
+    <p>One of the problems with online systems is that students can see a short status message without immediately understanding what it means.</p>
+    <p>Words such as:</p>
+    <ul class="dots">
+      <li>submitted;</li>
+      <li>processing;</li>
+      <li>pending;</li>
+      <li>approved;</li>
+      <li>rejected;</li>
+      <li>incomplete;</li>
+      <li>awaiting information</li>
+    </ul>
+    <p>can have very different implications.</p>
+    <p>Students should therefore avoid looking at a status as though it were simply a traffic light.</p>
+    <p>A status should be read together with any accompanying explanation or instruction. A guide to <a href="https://mynsfascheck.co.za/nsfas-status-meanings-what-each-code-tells-you/">NSFAS status meanings</a> can help students interpret common codes more carefully.</p>
+    <p>For example, if an application is marked as requiring additional information, repeatedly checking the same page will not solve the problem.</p>
+    <p>The student needs to identify what information is missing and determine how to provide it.</p>
+    <p>This distinction between monitoring information and responding to information is important.</p>
+    <p>Checking regularly only helps if students act when something requires attention.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="what">
+  <div class="wrap narrow">
+    <h2>What Information Should Students Check?</h2>
+    <p>Not everything needs to be monitored every day.</p>
+    <p>A practical system focuses on information that could affect a student's education, finances or ability to remain enrolled.</p>
+
+    <h3>Funding information</h3>
+    <p>Students who rely on financial assistance should regularly monitor their application or beneficiary information.</p>
+    <p>They should look for:</p>
+    <ul class="dots">
+      <li>status changes;</li>
+      <li>requests for documents;</li>
+      <li>funding decisions;</li>
+      <li>appeal-related information;</li>
+      <li>payment or allowance information;</li>
+      <li>other instructions.</li>
+    </ul>
+
+    <h3>University admission information</h3>
+    <p>Students waiting for admission should check whether their application has changed.</p>
+    <p>An admission decision can affect accommodation, funding and registration plans, so students should not treat it as an isolated piece of information.</p>
+
+    <h3>Registration information</h3>
+    <p>Registration dates can be particularly important.</p>
+    <p>Missing a deadline can create unnecessary administrative problems, especially when a student is trying to resolve another issue at the same time.</p>
+
+    <h3>Academic information</h3>
+    <p>Students should also monitor:</p>
+    <ul class="dots">
+      <li>examination timetables;</li>
+      <li>assignment deadlines;</li>
+      <li>academic results;</li>
+      <li>progression information;</li>
+      <li>course changes;</li>
+      <li>departmental notices.</li>
+    </ul>
+    <p>Academic information can sometimes change during a semester.</p>
+
+    <h3>Accommodation information</h3>
+    <p>Students living in residences or private accommodation should keep track of:</p>
+    <ul class="dots">
+      <li>payment arrangements;</li>
+      <li>residence rules;</li>
+      <li>renewal deadlines;</li>
+      <li>check-in information;</li>
+      <li>maintenance or relocation notices.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="routine" class="band">
+  <div class="wrap narrow tight">
+    <h2>Create a Weekly Information Routine</h2>
+    <p>The easiest way to stay organised is to turn checking into a habit.</p>
+    <p>For most students, a weekly review can be enough for general administrative information, with more frequent checking during application, registration or funding periods.</p>
+    <p>Choose a specific day and spend 15 to 20 minutes reviewing important accounts.</p>
+    <p>For example:</p>
+    <div class="cards">
+      <div><b>Monday</b>University email and academic portal.</div>
+      <div><b>Wednesday</b>Funding information and important applications.</div>
+      <div><b>Friday</b>Upcoming deadlines and accommodation information.</div>
+    </div>
+    <p>The exact schedule does not matter.</p>
+    <p>Consistency does.</p>
+    <p>The goal is to stop checking information only when something goes wrong.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="calendar">
+  <div class="wrap narrow tight">
+    <h2>Keep a Personal Deadline Calendar</h2>
+    <p>Students should not rely entirely on memory.</p>
+    <p>A digital calendar can be used to record:</p>
+    <ul class="dots">
+      <li>application deadlines;</li>
+      <li>document submission dates;</li>
+      <li>registration periods;</li>
+      <li>appeal deadlines;</li>
+      <li>examination dates;</li>
+      <li>accommodation deadlines;</li>
+      <li>important university events.</li>
+    </ul>
+    <p>Set reminders several days before important dates rather than on the deadline itself.</p>
+    <p>For something particularly important, two reminders can be useful.</p>
+    <p>For example:</p>
+    <div class="cards">
+      <div><b>7 days before</b>Review what is required.</div>
+      <div><b>2 days before</b>Confirm that everything has been submitted.</div>
+    </div>
+    <p>This creates a buffer if something unexpected happens.</p>
+  </div>
+</section>
+
+<section id="documents" class="band">
+  <div class="wrap narrow tight">
+    <h2>Keep Important Documents in One Place</h2>
+    <p>Checking information regularly becomes much easier when supporting documents are organised.</p>
+    <p>Create a secure folder containing important files.</p>
+    <p>This could include:</p>
+    <ul class="dots">
+      <li>identification documents;</li>
+      <li>academic records;</li>
+      <li>admission letters;</li>
+      <li>funding confirmations;</li>
+      <li>proof of residence;</li>
+      <li>application confirmations;</li>
+      <li>appeal documents;</li>
+      <li>registration records.</li>
+    </ul>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="records">
+  <div class="wrap narrow tight">
+    <h2>Why Application Records Matter</h2>
+    <p>Students often remember submitting an application but forget the exact date, reference number or documents involved.</p>
+    <p>That can become a problem when they need to follow up.</p>
+    <p>A simple application tracker can solve this.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Application</th>
+            <th scope="col">Date Submitted</th>
+            <th scope="col">Current Status</th>
+            <th scope="col">Next Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">University application</th><td>12 Jan</td><td>Submitted</td><td>Monitor</td></tr>
+          <tr><th scope="row">Funding application</th><td>18 Jan</td><td>Processing</td><td>Check account</td></tr>
+          <tr><th scope="row">Accommodation</th><td>25 Jan</td><td>Awaiting response</td><td>Follow up</td></tr>
+          <tr><th scope="row">Registration</th><td>10 Feb</td><td>Not started</td><td>Prepare documents</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The table does not need to be sophisticated.</p>
+    <p>Its purpose is to give students one place where they can see what is happening.</p>
+  </div>
+</section>
+
+<section id="before" class="closing">
+  <div class="wrap narrow tight">
+    <h2>Check Your Information Before a Deadline</h2>
+    <p>Regular monitoring becomes especially important before major academic events.</p>
+    <p>A student preparing for registration, for example, should not wait until the final day to discover that something is incomplete.</p>
+    <p>Before an important deadline, students should review:</p>
+    <ol class="qs">
+      <li>What am I required to submit?</li>
+      <li>Have I submitted it?</li>
+      <li>Did I receive confirmation?</li>
+      <li>Is anything still outstanding?</li>
+      <li>Is there a deadline for correcting a problem?</li>
+      <li>Who should I contact if something is unclear?</li>
+    </ol>
+    <p>This six-question check can prevent many avoidable mistakes.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap narrow tight">
+    <h2>Keep Your Contact Details Updated</h2>
+    <p>An overlooked but important issue is outdated contact information.</p>
+    <p>Students may change phone numbers, email addresses or addresses during their studies.</p>
+    <p>If an institution or funding service has outdated information, important communication may not reach the student.</p>
+    <p>Students should therefore check that their:</p>
+    <ul class="dots">
+      <li>phone number;</li>
+      <li>email address;</li>
+      <li>residential address;</li>
+      <li>banking information, where relevant;</li>
+      <li>institutional details</li>
+    </ul>
+    <p>are accurate wherever they are required.</p>
+    <p>Any changes should be made through the appropriate official process.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="nonews" class="band">
+  <div class="wrap narrow tight">
+    <h2>Don't Assume That "No News" Means "Good News"</h2>
+    <p>This is a common mistake.</p>
+    <p>A student might think:</p>
+    <blockquote><p>"Nobody has contacted me, so everything must be fine."</p></blockquote>
+    <p>That is not always the case.</p>
+    <p>There may simply be no new message yet.</p>
+    <p>Alternatively, information may have been posted to a portal that the student has not checked.</p>
+    <p>This is why active monitoring is better than passive waiting.</p>
+    <p>Students should take responsibility for checking the systems they are expected to use.</p>
+  </div>
+</section>
+
+<section id="worrying">
+  <div class="wrap narrow tight">
+    <h2>Understand the Difference Between Checking and Worrying</h2>
+    <p>Regular monitoring should reduce stress, not increase it.</p>
+    <p>There is no benefit in checking a portal every ten minutes.</p>
+    <p>That can create unnecessary anxiety without providing additional information.</p>
+    <p>A better approach is structured checking.</p>
+    <p>For example:</p>
+    <ul class="dots">
+      <li>During normal periods: check important accounts once or twice a week.</li>
+      <li>During applications: check more frequently.</li>
+      <li>Near deadlines: review information and requirements carefully.</li>
+      <li>When waiting for a decision: monitor according to the expected communication process rather than constantly refreshing.</li>
+    </ul>
+    <p>The objective is awareness, not obsession.</p>
+  </div>
+</section>
+
+<section id="unofficial" class="band">
+  <div class="wrap narrow tight">
+    <h2>Be Careful With Unofficial Information</h2>
+    <p>Students often turn to social media when they have questions.</p>
+    <p>There is nothing wrong with looking for general experiences from other students.</p>
+    <p>The problem occurs when personal experiences are treated as official information.</p>
+    <p>For example, one student might say:</p>
+    <blockquote><p>"My funding was approved yesterday."</p></blockquote>
+    <p>Another might say:</p>
+    <blockquote><p>"Mine was rejected."</p></blockquote>
+    <p>Neither statement tells you what will happen with your application.</p>
+    <p>Different students can have different circumstances, institutions, qualifications and application histories.</p>
+    <p>When something directly affects your education or finances, verify it through the appropriate official channel.</p>
+  </div>
+</section>
+
+<section id="protect" class="warn">
+  <div class="wrap narrow tight">
+    <h2>Protect Your Personal Information</h2>
+    <p>Regular checking should never mean becoming careless with personal information.</p>
+    <p>Students should be cautious when entering:</p>
+    <ul class="dots">
+      <li>identification numbers;</li>
+      <li>passwords;</li>
+      <li>banking information;</li>
+      <li>documents;</li>
+      <li>personal addresses;</li>
+      <li>contact details.</li>
+    </ul>
+    <p>Do not enter sensitive information into a website simply because it appears in a search result.</p>
+    <p>Check the website address carefully.</p>
+    <p>Avoid links sent by unknown people.</p>
+    <p>Never give your password to someone claiming that they can "fix" your application.</p>
+    <p>A student who is trying to solve an administrative problem should not accidentally create a cybersecurity problem.</p>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap narrow tight">
+    <h2>What to Do When You Find a Problem</h2>
+    <p>Discovering a problem early is useful only if you know how to respond.</p>
+    <p>Suppose you log into an account and discover that information is missing.</p>
+    <p>Don't immediately panic.</p>
+    <p>Follow a simple process.</p>
+    <ol class="steps">
+      <li>
+        <b>Read the message carefully</b>
+        <p>Don't rely only on the headline status. Read any accompanying explanation.</p>
+      </li>
+      <li>
+        <b>Identify what action is required</b>
+        <p>Determine whether you need to upload something, correct information, contact an office or simply wait.</p>
+      </li>
+      <li>
+        <b>Check the deadline</b>
+        <p>If there is a deadline, record it immediately.</p>
+      </li>
+      <li>
+        <b>Gather supporting information</b>
+        <p>Find the relevant documents or reference numbers.</p>
+      </li>
+      <li>
+        <b>Submit the required information correctly</b>
+        <p>Double-check files and details before submitting.</p>
+      </li>
+      <li>
+        <b>Keep proof</b>
+        <p>Save the confirmation or evidence that you completed the action.</p>
+      </li>
+      <li>
+        <b>Follow up when appropriate</b>
+        <p>If the matter remains unresolved, contact the relevant office through the proper channel.</p>
+      </li>
+    </ol>
+    <p style="margin-top:28px">This process is much more effective than sending multiple messages without knowing what the actual problem is.</p>
+  </div>
+</section>
+
+<section id="hierarchy" class="band">
+  <div class="wrap narrow tight">
+    <h2>Students Should Build an Information Hierarchy</h2>
+    <p>Not every message deserves the same level of attention.</p>
+    <p>A useful system is to divide information into three categories.</p>
+    <div class="tiers">
+      <div>
+        <b>Urgent</b>
+        <p>Information requiring action before a specific deadline.</p>
+        <p>Examples include document requests, registration deadlines and appeal periods.</p>
+      </div>
+      <div>
+        <b>Important</b>
+        <p>Information that affects your studies but does not require immediate action.</p>
+        <p>Examples include academic notices or upcoming institutional changes.</p>
+      </div>
+      <div>
+        <b>General</b>
+        <p>Information that may be useful but does not directly affect your current responsibilities.</p>
+        <p>Examples include general events, newsletters and promotional announcements.</p>
+      </div>
+    </div>
+    <p>This system prevents students from treating every notification as equally important.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="money">
+  <div class="wrap narrow tight">
+    <h2>Checking Information Can Protect Your Money</h2>
+    <p>The benefits are not only administrative.</p>
+    <p>Regular monitoring can also protect students financially.</p>
+    <p>Imagine discovering an accommodation problem after several weeks rather than immediately.</p>
+    <p>Or discovering that a required registration step was missed after the registration period has nearly ended.</p>
+    <p>Or overlooking a funding-related notification that required a response.</p>
+    <p>In each case, early awareness can give the student more time to respond.</p>
+    <p>Time is often one of the most valuable resources in university administration.</p>
+  </div>
+</section>
+
+<section id="family" class="closing">
+  <div class="wrap narrow tight">
+    <h2>Parents and Family Members Can Help, But Students Should Stay Involved</h2>
+    <p>Family members often help students manage financial and educational responsibilities.</p>
+    <p>That support can be valuable.</p>
+    <p>However, students should still understand their own applications and records.</p>
+    <p>A student should know:</p>
+    <ul class="dots">
+      <li>what they applied for;</li>
+      <li>what documents were submitted;</li>
+      <li>what their current status means;</li>
+      <li>what deadlines apply;</li>
+      <li>what to do if something changes.</li>
+    </ul>
+    <p>This becomes especially important as students become more independent.</p>
+    <p>The aim is not to manage everything alone.</p>
+    <p>It is to know enough to participate actively in your own education.</p>
+  </div>
+</section>
+
+<section id="checklist">
+  <div class="wrap narrow">
+    <h2>A Simple Student Information Checklist</h2>
+    <p>Students can save the following checklist and review it regularly.</p>
+
+    <h3>Every week</h3>
+    <ul class="checks">
+      <li>Check university email</li>
+      <li>Check important online portals</li>
+      <li>Review upcoming deadlines</li>
+      <li>Check funding information where applicable</li>
+      <li>Review accommodation messages</li>
+      <li>Record anything requiring action</li>
+    </ul>
+
+    <h3>Every month</h3>
+    <ul class="checks">
+      <li>Update your application tracker</li>
+      <li>Organise newly received documents</li>
+      <li>Review contact information</li>
+      <li>Check upcoming academic dates</li>
+      <li>Review financial commitments</li>
+    </ul>
+
+    <h3>Before a major deadline</h3>
+    <ul class="checks">
+      <li>Confirm requirements</li>
+      <li>Confirm documents</li>
+      <li>Check submission status</li>
+      <li>Save confirmation</li>
+      <li>Record the next deadline</li>
+    </ul>
+
+    <p>This routine takes little time but can make university administration significantly easier.</p>
+  </div>
+</section>
+
+<section id="longterm" class="band">
+  <div class="wrap narrow tight">
+    <h2>The Long-Term Benefit of Staying Organised</h2>
+    <p>The value of checking information regularly extends beyond one application.</p>
+    <p>Students who develop good administrative habits early can carry those habits into their professional lives.</p>
+    <p>The ability to:</p>
+    <ul class="dots">
+      <li>meet deadlines;</li>
+      <li>organise documents;</li>
+      <li>respond to messages;</li>
+      <li>track applications;</li>
+      <li>maintain accurate records;</li>
+      <li>protect personal information;</li>
+      <li>follow procedures</li>
+    </ul>
+    <p>is useful in almost every workplace.</p>
+    <p>In other words, managing university administration is also practice for managing adult responsibilities.</p>
+  </div>
+</section>
+
+<section id="conclusion" class="closing">
+  <div class="wrap narrow">
+    <h2>Conclusion</h2>
+    <p>University students have enough academic pressure without adding avoidable administrative problems to the list. A missed notification may seem insignificant when it first arrives. But if it concerns funding, registration, accommodation or an important academic deadline, ignoring it can create consequences that are much harder to resolve later.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <b>My NSFAS Check</b>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5H16.7V4.6c-.3 0-1.3-.13-2.47-.13-2.45 0-4.13 1.5-4.13 4.24v2.19H7.4V14h2.7v8h3.4z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M17.5 3h3.1l-6.8 7.8L21.8 21h-6.2l-4.4-5.8L6 21H2.9l7.3-8.3L2.5 3h6.4l4 5.3L17.5 3zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 4.6c2.4 0 2.7 0 3.6.05.9.04 1.4.2 1.7.32.43.17.74.37 1.06.7.33.32.53.63.7 1.06.12.3.28.8.32 1.7.05.9.05 1.2.05 3.6s0 2.7-.05 3.6c-.04.9-.2 1.4-.32 1.7-.17.43-.37.74-.7 1.06-.32.33-.63.53-1.06.7-.3.12-.8.28-1.7.32-.9.05-1.2.05-3.6.05s-2.7 0-3.6-.05c-.9-.04-1.4-.2-1.7-.32a2.9 2.9 0 01-1.06-.7 2.9 2.9 0 01-.7-1.06c-.12-.3-.28-.8-.32-1.7C4.6 14.7 4.6 14.4 4.6 12s0-2.7.05-3.6c.04-.9.2-1.4.32-1.7.17-.43.37-.74.7-1.06a2.9 2.9 0 011.06-.7c.3-.12.8-.28 1.7-.32.9-.05 1.2-.05 3.6-.05M12 3c-2.44 0-2.75.01-3.7.06-.96.04-1.6.2-2.18.42-.6.23-1.1.54-1.6 1.04-.5.5-.81 1-1.04 1.6-.22.57-.38 1.22-.42 2.18C3.01 9.25 3 9.56 3 12s.01 2.75.06 3.7c.04.96.2 1.6.42 2.18.23.6.54 1.1 1.04 1.6.5.5 1 .81 1.6 1.04.57.22 1.22.38 2.18.42.95.05 1.26.06 3.7.06s2.75-.01 3.7-.06c.96-.04 1.6-.2 2.18-.42.6-.23 1.1-.54 1.6-1.04.5-.5.81-1 1.04-1.6.22-.57.38-1.22.42-2.18.05-.95.06-1.26.06-3.7s-.01-2.75-.06-3.7c-.04-.96-.2-1.6-.42-2.18a4.5 4.5 0 00-1.04-1.6 4.5 4.5 0 00-1.6-1.04c-.57-.22-1.22-.38-2.18-.42C14.75 3.01 14.44 3 12 3zm0 4.38A4.62 4.62 0 1016.62 12 4.62 4.62 0 0012 7.38zm0 7.62A3 3 0 1115 12a3 3 0 01-3 3zm5.88-7.8a1.08 1.08 0 11-1.08-1.08 1.08 1.08 0 011.08 1.08z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2s-.2-1.4-.8-2c-.75-.8-1.6-.8-2-.85C16 4.2 12 4.2 12 4.2h-.02s-4 0-6.8.15c-.4.05-1.25.05-2 .85-.6.6-.8 2-.8 2S2.2 8.8 2.2 10.5v1.6c0 1.65.2 3.3.2 3.3s.2 1.4.8 2c.75.8 1.75.78 2.2.86 1.6.15 6.8.2 6.8.2s4 0 6.8-.16c.4-.05 1.25-.05 2-.85.6-.6.8-2 .8-2s.2-1.65.2-3.3v-1.6c0-1.65-.2-3.3-.2-3.3zM10 14.3V8.9l5.15 2.72L10 14.3z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.94 5.5a1.94 1.94 0 11-3.88 0 1.94 1.94 0 013.88 0zM3.2 8.9h3.6V21H3.2V8.9zm5.9 0h3.45v1.65h.05c.48-.9 1.65-1.85 3.4-1.85 3.63 0 4.3 2.3 4.3 5.3V21h-3.6v-5.85c0-1.4-.03-3.2-2-3.2-2 0-2.3 1.52-2.3 3.1V21H9.1V8.9z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Contents</h5>
+        <ul>
+          <li><a href="#missed">Why Students Often Miss Important Information</a></li>
+          <li><a href="#status">Not Every Status Means the Same Thing</a></li>
+          <li><a href="#what">What Information Should Students Check?</a></li>
+          <li><a href="#routine">Create a Weekly Information Routine</a></li>
+          <li><a href="#records">Why Application Records Matter</a></li>
+          <li><a href="#protect">Protect Your Personal Information</a></li>
+          <li><a href="#problem">What to Do When You Find a Problem</a></li>
+          <li><a href="#checklist">A Simple Student Information Checklist</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-btm">© 2026 My NSFAS Check</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),n=document.getElementById('nav');
+  b.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    b.setAttribute('aria-expanded',o);
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){n.classList.remove('open');b.setAttribute('aria-expanded',false)});
+  });
+})();
+</script>
+</body>
+</html>
+
